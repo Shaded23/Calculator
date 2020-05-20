@@ -31,8 +31,10 @@ html, body{
     justify-content: center;
 }
 .number-display{
-    font-size: 50px;
+    font-size: 66px;
     margin: 0;
+    max-height: 120px;
+    overflow: auto;
     padding: 20px 0 20px 30px;
 }
 .btn{

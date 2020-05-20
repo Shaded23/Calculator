@@ -1,3 +1,6 @@
+//TO DO:
+//add division by zero error
+
 let num1 = { value: '0' };
 let num2 = { value: null };
 let hasOperation = false;
@@ -81,8 +84,35 @@ function clearEntrySelect() {
 	number.value = '0';
 	updateDisplay();
 }
-function backspaceSelect() {}
+function backspaceSelect() {
+	let number = findNumberToAppend();
+
+	if (number.value.length >= 2) {
+		number.value = number.value.slice(0, -1);
+	} else {
+		number.value = '0';
+	}
+	updateDisplay();
+}
 
 //Decimal and Plus Minus
-function decimalSelect() {}
-function plusMinusSelect() {}
+function decimalSelect() {
+	let number = findNumberToAppend();
+	if (!number.value.includes('.')) {
+		number.value += '.';
+	}
+
+	updateDisplay();
+}
+function plusMinusSelect() {
+	let number = findNumberToAppend();
+	if (number.value === '0') {
+		return;
+	} else if (number.value.includes('-')) {
+		number.value = number.value.substring(1);
+	} else {
+		number.value = '-' + number.value;
+	}
+
+	updateDisplay();
+}

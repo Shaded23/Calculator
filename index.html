@@ -9,30 +9,31 @@
 	<body>
 		<div class="page-wrapper">
 			<div class="main-wrapper">
-				<h1 class="number-display">0</h1>
+				<h1 id="display" class="number-display">0</h1>
 				<div class="btn-wrapper">
-					<button class="btn">CE</button>
-					<button class="btn">C</button>
-					<button class="btn">&larr;</button>
-					<button class="btn">&divide;</button>
-					<button class="btn">7</button>
-					<button class="btn">8</button>
-					<button class="btn">9</button>
-					<button class="btn">&times;</button>
-					<button class="btn">4</button>
-					<button class="btn">5</button>
-					<button class="btn">6</button>
-					<button class="btn">&minus;</button>
-					<button class="btn">1</button>
-					<button class="btn">2</button>
-					<button class="btn">3</button>
-					<button class="btn">&plus;</button>
-					<button class="btn">&plusmn;</button>
-					<button class="btn">0</button>
-					<button class="btn">&sdot;</button>
-					<button class="btn">&equals;</button>
+					<button class="btn" onclick="clearEntrySelect()">CE</button>
+					<button class="btn" onclick="clearSelect()">C</button>
+					<button class="btn" onclick="">&larr;</button>
+					<button class="btn" onclick="operationSelect('/')">&divide;</button>
+					<button class="btn" onclick="numberSelect('7')">7</button>
+					<button class="btn" onclick="numberSelect('8')">8</button>
+					<button class="btn" onclick="numberSelect('9')">9</button>
+					<button class="btn" onclick="operationSelect('*')">&times;</button>
+					<button class="btn" onclick="numberSelect('4')">4</button>
+					<button class="btn" onclick="numberSelect('5')">5</button>
+					<button class="btn" onclick="numberSelect('6')">6</button>
+					<button class="btn" onclick="operationSelect('-')">&minus;</button>
+					<button class="btn" onclick="numberSelect('1')">1</button>
+					<button class="btn" onclick="numberSelect('2')">2</button>
+					<button class="btn" onclick="numberSelect('3')">3</button>
+					<button class="btn" onclick="operationSelect('+')">&plus;</button>
+					<button class="btn" onclick="">&plusmn;</button>
+					<button class="btn" onclick="numberSelect('0')">0</button>
+					<button class="btn" onclick="">&sdot;</button>
+					<button class="btn" onclick="equalSelect()">&equals;</button>
 				</div>
 			</div>
 		</div>
+		<script src="app.js"></script>
 	</body>
 </html>

@@ -1,8 +1,8 @@
 //TO DO:
-//add division by zero error
+//
 
 let num1 = { value: '0' };
-let num2 = { value: null };
+let num2 = { value: '' };
 let hasOperation = false;
 let operator = null;
 
@@ -12,7 +12,7 @@ function updateDisplay() {
 
 	if (!hasOperation) {
 		display.innerHTML = `${num1.value}`;
-	} else if (num2.value === null) {
+	} else if (num2.value === '') {
 		display.innerText = `${num1.value} ${operator}`;
 	} else {
 		display.innerText = `${num1.value} ${operator} ${num2.value}`;
@@ -29,7 +29,7 @@ function numberSelect(num) {
 	let number = findNumberToAppend();
 	if (number.value === '0' && num === '0') {
 		return;
-	} else if ((number.value === '0' || number.value === null) && num !== '0') {
+	} else if (number.value === '0' && num !== '0') {
 		number.value = num;
 	} else {
 		number.value += num;
@@ -58,7 +58,13 @@ function equalSelect() {
 			num1.value = String(number1 * number2);
 			break;
 		case '/':
-			num1.value = String(number1 / number2);
+			if (number2 === 0) {
+				num1.value = 'Cannot divide by zero';
+				divideByZeroClear();
+				return;
+			} else {
+				num1.value = String(number1 / number2);
+			}
 			break;
 	}
 
@@ -70,11 +76,11 @@ function equalSelect() {
 function resetAfterEqual() {
 	operator = null;
 	hasOperation = false;
-	num2.value = null;
+	num2.value = '';
 }
 function clearSelect() {
 	num1.value = '0';
-	num2.value = null;
+	num2.value = '';
 	hasOperation = false;
 	operator = null;
 	updateDisplay();
@@ -84,6 +90,12 @@ function clearEntrySelect() {
 	number.value = '0';
 	updateDisplay();
 }
+function divideByZeroClear() {
+	operator = null;
+	hasOperation = false;
+	updateDisplay();
+	num1.value = '0';
+}
 function backspaceSelect() {
 	let number = findNumberToAppend();
 
@@ -92,12 +104,14 @@ function backspaceSelect() {
 	} else {
 		number.value = '0';
 	}
+
 	updateDisplay();
 }
 
 //Decimal and Plus Minus
 function decimalSelect() {
 	let number = findNumberToAppend();
+
 	if (!number.value.includes('.')) {
 		number.value += '.';
 	}
@@ -106,6 +120,7 @@ function decimalSelect() {
 }
 function plusMinusSelect() {
 	let number = findNumberToAppend();
+
 	if (number.value === '0') {
 		return;
 	} else if (number.value.includes('-')) {
